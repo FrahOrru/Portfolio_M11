@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Olivetti";
+  src: url("/Olivetti Type2.ttf") format("ttf");
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -16,18 +21,219 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.main {
+  background-color: #bcc1bb;
+  background-image: url("/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.sectionH {
+  display: grid;
+  grid-template-columns: 25% 25% 50%;
+  height: 95vh;
+}
+
+.sectionH .first {
+  background-image: url("/header.jpg");
+  background-position: center;
+}
+
+.sectionH .second {
+  background-color: #54539e;
+  font-family: "Olivetti";
+  font-size: 48px;
+  font-weight: 500;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionH .second h2 {
+  margin-top: 9rem;
+}
+
+.sectionH .third {
+  background-color: #363636;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.sectionH .third p {
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 0.5rem;
+  text-align: center;
+  line-height: 2rem;
+}
+
+.sectionH .third div {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sectionA {
+  grid-template-columns: 50% 25% 25%;
+  height: 95vh;
+  position: relative;
+}
+
+.sectionA .first {
+  background-color: #bcc1bb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 0 5rem;
+}
+
+.sectionA .first h2 {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+}
+
+.sectionA .first .experience-blog h3 {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.4rem;
+}
+
+.sectionA .first .experience-blog h4 {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+}
+
+.sectionA .second {
+  background-color: #54539e;
+}
+
+.sectionA .third {
+  background-color: #bcc1bb;
+}
+
+.sectionA .absolute-image {
+  position: absolute;
+  top: -8%;
+  left: 38%;
+  width: 300px;
+}
+
+.sectionA .absolute-image2 {
+  position: absolute;
+  bottom: 2%;
+  right: 10%;
+  width: 300px;
+}
+
+.sectionB {
+  grid-template-columns: 25% 25% 50%;
+  height: 95vh;
+  position: relative;
+}
+
+.sectionB .first {
+  background-color: #363636;
+}
+
+.sectionB .third {
+  background-color: #363636;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+}
+
+.sectionB .third p {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.4rem;
+  line-height: 2rem;
+
+  text-transform: uppercase;
+
+  text-align: center;
+}
+
+.sectionB .second {
+  /* background-image: url("/section3.jpg"); */
+  background-color: #54539e;
+}
+
+.sectionB .absolute-image3 {
+  position: absolute;
+  right: 50%;
+  top: 25%;
+}
+
+.sectionB .button-blog {
+  background-color: #54539e;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+.sectionB .button-blog:hover {
+  background-color: #464580;
+}
+
+.sectionC {
+  grid-template-columns: 50% 25% 25%;
+  height: 95vh;
+  position: relative;
+}
+
+.sectionC .first {
+  background-image: url("/section3.jpg");
+}
+
+.sectionC .second {
+  background-color: #464580;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+}
+
+.sectionC .second p {
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 0.4rem;
+  line-height: 2rem;
+
+  text-align: center;
+
+  margin: 0 2rem;
+}
+
+.sectionC .third {
+  background-image: url("/background.jpg");
+}
+
+.sectionD {
+  grid-template-columns: 50% 25% 25%;
+  height: 95vh;
+  position: relative;
+}
+
+.sectionD .first {
+  background-color: #bcc1bb;
+}
+
+.sectionD .second {
+  background-color: #54539e;
+}
+
+.sectionD .third {
+  background-color: #bcc1bb;
 }

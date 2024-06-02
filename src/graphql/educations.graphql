@@ -1,0 +1,13 @@
+query Educations {
+  educations {
+    description {
+      html
+      text
+    }
+    id
+    name
+    start
+    end
+    title
+  }
+}

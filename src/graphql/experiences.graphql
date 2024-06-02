@@ -1,0 +1,16 @@
+query Experiences {
+  experiences {
+    company
+    id
+    position
+    place {
+      longitude
+      latitude
+    }
+    start
+    end
+    description {
+      html
+    }
+  }
+}
