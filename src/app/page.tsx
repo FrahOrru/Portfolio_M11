@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { sdk } from "../lib/client";
+import Link from "next/link";
 
 export default async function Home() {
   const experiences = await sdk.Experiences();
-
-  console.log(experiences);
+  const educations = await sdk.Educations();
 
   return (
     <div className="main">
@@ -45,7 +45,7 @@ export default async function Home() {
           <p>Do you wanna know more about me?</p>
           <p>Read my posts where I write about my interests</p>
           <div className="button-blog">
-            See my Blog
+            <Link href={'/blog'}>See my Blog</Link>
           </div>
         </div>
         <Image className="absolute-image3" src={'/section3-2.jpg'} alt="section3 img" width={500} height={200}></Image>   
@@ -63,10 +63,23 @@ export default async function Home() {
       </div>
       <div className="sectionD mx-20 grid">
         <div className="first">
+          <Image src={'/section5-2.jpg'} alt="section 5 image" height={500} width={200}></Image>
         </div>
         <div className="second">
         </div>
         <div className="third">
+        </div>
+        <Image className="absolute-image4" src={'/section5.jpg'} alt="section 5 image" height={500} width={200}></Image>
+
+        <div className="absolute-text">
+        <h2>Education</h2>
+          {educations.data.educations.map((education) => {
+            return(
+            <div key={education.id} className="experience-blog">
+              <h3>{education.title}</h3>
+              <h4>{education.name}</h4>
+            </div>)
+          })}
         </div>
       </div>
     </div>

@@ -1,0 +1,14 @@
+query Posts {
+  posts {
+    id
+    title
+    introduction
+    sections {
+      id
+      title
+    }
+    image {
+      url
+    }
+  }
+}

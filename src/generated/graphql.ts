@@ -50,6 +50,7 @@ export type Asset = Entity & Node & {
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID']['output'];
+  imagePost: Array<Post>;
   imageProject: Array<Project>;
   /** System Locale field */
   locale: Locale;
@@ -105,6 +106,20 @@ export type AssetHistoryArgs = {
   limit?: Scalars['Int']['input'];
   skip?: Scalars['Int']['input'];
   stageOverride?: InputMaybe<Stage>;
+};
+
+
+/** Asset system model */
+export type AssetImagePostArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<PostOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<PostWhereInput>;
 };
 
 
@@ -193,6 +208,7 @@ export type AssetConnection = {
 export type AssetCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   fileName?: InputMaybe<Scalars['String']['input']>;
+  imagePost?: InputMaybe<PostCreateManyInlineInput>;
   imageProject?: InputMaybe<ProjectCreateManyInlineInput>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<AssetCreateLocalizationsInput>;
@@ -291,6 +307,9 @@ export type AssetManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  imagePost_every?: InputMaybe<PostWhereInput>;
+  imagePost_none?: InputMaybe<PostWhereInput>;
+  imagePost_some?: InputMaybe<PostWhereInput>;
   imageProject_every?: InputMaybe<ProjectWhereInput>;
   imageProject_none?: InputMaybe<ProjectWhereInput>;
   imageProject_some?: InputMaybe<ProjectWhereInput>;
@@ -376,6 +395,7 @@ export type AssetTransformationInput = {
 
 export type AssetUpdateInput = {
   fileName?: InputMaybe<Scalars['String']['input']>;
+  imagePost?: InputMaybe<PostUpdateManyInlineInput>;
   imageProject?: InputMaybe<ProjectUpdateManyInlineInput>;
   /** Manage document localizations */
   localizations?: InputMaybe<AssetUpdateLocalizationsInput>;
@@ -699,6 +719,9 @@ export type AssetWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  imagePost_every?: InputMaybe<PostWhereInput>;
+  imagePost_none?: InputMaybe<PostWhereInput>;
+  imagePost_some?: InputMaybe<PostWhereInput>;
   imageProject_every?: InputMaybe<ProjectWhereInput>;
   imageProject_none?: InputMaybe<ProjectWhereInput>;
   imageProject_some?: InputMaybe<ProjectWhereInput>;
@@ -3814,6 +3837,7 @@ export type Post = Entity & Node & {
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID']['output'];
+  image?: Maybe<Asset>;
   interests: Array<Interest>;
   introduction?: Maybe<Scalars['String']['output']>;
   /** The time the document was published. Null on documents in draft stage. */
@@ -3849,6 +3873,13 @@ export type PostHistoryArgs = {
   limit?: Scalars['Int']['input'];
   skip?: Scalars['Int']['input'];
   stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type PostImageArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  where?: InputMaybe<AssetSingleRelationWhereInput>;
 };
 
 
@@ -3920,6 +3951,7 @@ export type PostConnection = {
 
 export type PostCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  image?: InputMaybe<AssetCreateOneInlineInput>;
   interests?: InputMaybe<InterestCreateManyInlineInput>;
   introduction?: InputMaybe<Scalars['String']['input']>;
   sections?: InputMaybe<SectionCreateManyInlineInput>;
@@ -3998,6 +4030,7 @@ export type PostManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  image?: InputMaybe<AssetWhereInput>;
   interests_every?: InputMaybe<InterestWhereInput>;
   interests_none?: InputMaybe<InterestWhereInput>;
   interests_some?: InputMaybe<InterestWhereInput>;
@@ -4095,6 +4128,7 @@ export enum PostOrderByInput {
 }
 
 export type PostUpdateInput = {
+  image?: InputMaybe<AssetUpdateOneInlineInput>;
   interests?: InputMaybe<InterestUpdateManyInlineInput>;
   introduction?: InputMaybe<Scalars['String']['input']>;
   sections?: InputMaybe<SectionUpdateManyInlineInput>;
@@ -4220,6 +4254,7 @@ export type PostWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  image?: InputMaybe<AssetWhereInput>;
   interests_every?: InputMaybe<InterestWhereInput>;
   interests_none?: InputMaybe<InterestWhereInput>;
   interests_some?: InputMaybe<InterestWhereInput>;
@@ -7311,6 +7346,11 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
+export type EducationsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type EducationsQuery = { __typename?: 'Query', educations: Array<{ __typename?: 'Education', id: string, name?: string | null, start?: any | null, end?: any | null, title?: string | null, description?: { __typename?: 'RichText', html: string, text: string } | null }> };
+
 export type ExperiencesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -7321,7 +7361,27 @@ export type InterestsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type InterestsQuery = { __typename?: 'Query', interests: Array<{ __typename?: 'Interest', id: string, name?: string | null }> };
 
+export type PostsQueryVariables = Exact<{ [key: string]: never; }>;
 
+
+export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title?: string | null, introduction?: string | null, sections: Array<{ __typename?: 'Section', id: string, title?: string | null }>, image?: { __typename?: 'Asset', url: string } | null }> };
+
+
+export const EducationsDocument = gql`
+    query Educations {
+  educations {
+    description {
+      html
+      text
+    }
+    id
+    name
+    start
+    end
+    title
+  }
+}
+    `;
 export const ExperiencesDocument = gql`
     query Experiences {
   experiences {
@@ -7348,20 +7408,44 @@ export const InterestsDocument = gql`
   }
 }
     `;
+export const PostsDocument = gql`
+    query Posts {
+  posts {
+    id
+    title
+    introduction
+    sections {
+      id
+      title
+    }
+    image {
+      url
+    }
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 
 
 const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType, _variables) => action();
+const EducationsDocumentString = print(EducationsDocument);
 const ExperiencesDocumentString = print(ExperiencesDocument);
 const InterestsDocumentString = print(InterestsDocument);
+const PostsDocumentString = print(PostsDocument);
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    Educations(variables?: EducationsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: EducationsQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
+        return withWrapper((wrappedRequestHeaders) => client.rawRequest<EducationsQuery>(EducationsDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Educations', 'query', variables);
+    },
     Experiences(variables?: ExperiencesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: ExperiencesQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
         return withWrapper((wrappedRequestHeaders) => client.rawRequest<ExperiencesQuery>(ExperiencesDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Experiences', 'query', variables);
     },
     Interests(variables?: InterestsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: InterestsQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
         return withWrapper((wrappedRequestHeaders) => client.rawRequest<InterestsQuery>(InterestsDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Interests', 'query', variables);
+    },
+    Posts(variables?: PostsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: PostsQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
+        return withWrapper((wrappedRequestHeaders) => client.rawRequest<PostsQuery>(PostsDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Posts', 'query', variables);
     }
   };
 }

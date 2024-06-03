@@ -92,19 +92,22 @@
   padding: 0 5rem;
 }
 
-.sectionA .first h2 {
+.sectionA .first h2,
+.absolute-text h2 {
   font-size: 32px;
   font-weight: 500;
   letter-spacing: 0.2rem;
 }
 
-.sectionA .first .experience-blog h3 {
+.sectionA .first .experience-blog h3,
+.absolute-text h3 {
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.4rem;
 }
 
-.sectionA .first .experience-blog h4 {
+.sectionA .first .experience-blog h4,
+.absolute-text h4 {
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0.2rem;
@@ -228,6 +231,16 @@
 
 .sectionD .first {
   background-color: #bcc1bb;
+
+  display: flex;
+  align-items: flex-end;
+}
+
+.sectionD .first img {
+  margin-left: 3rem;
+  margin-bottom: 3rem;
+
+  width: 350px;
 }
 
 .sectionD .second {
@@ -236,4 +249,83 @@
 
 .sectionD .third {
   background-color: #bcc1bb;
+}
+
+.absolute-text {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  width: 30%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+  justify-content: center;
+
+  text-align: right;
+}
+
+.absolute-image4 {
+  position: absolute;
+  top: -8%;
+  left: 35%;
+  width: 350px;
+}
+
+.blog-page {
+  color: #363636;
+}
+
+.blog-page .header {
+  background-image: url("/blogHeader4.jpg");
+  background-size: cover;
+  background-position: bottom;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 90vh;
+
+  margin: 1rem;
+
+  text-transform: uppercase;
+}
+
+.blog-page .header h1 {
+  font-size: 48px;
+}
+
+.blog-page .header p {
+  font-size: 20px;
+}
+
+.highlights {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.blog-page .highlights h2 {
+  margin-top: 2rem;
+  text-transform: uppercase;
+  font-size: 38px;
+}
+
+.blog-page .highlights .cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.button-back {
+  background-color: #fff;
+  font-size: 28px;
+  padding: 1rem 1.8rem;
 }
