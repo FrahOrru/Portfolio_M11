@@ -329,3 +329,53 @@
   font-size: 28px;
   padding: 1rem 1.8rem;
 }
+
+.post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  height: 100vh;
+  margin: 2rem 0;
+}
+
+.post h1 {
+  font-size: 35px;
+  letter-spacing: 0.3rem;
+  color: #363636;
+  text-align: center;
+}
+
+.introduction,
+.blog-section {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 5rem;
+}
+
+.blog-section .section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 0.5rem;
+}
+
+.post h1,
+.post .introduction,
+.post .blog-section {
+  margin: 2rem 10%;
+}
+
+.back-button {
+  width: 100%;
+  text-align: left;
+
+  padding-left: 2rem;
+}
+
+.back-button p {
+  cursor: pointer;
+}

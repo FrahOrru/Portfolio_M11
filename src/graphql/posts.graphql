@@ -6,6 +6,10 @@ query Posts {
     sections {
       id
       title
+      content {
+        html
+        text
+      }
     }
     image {
       url

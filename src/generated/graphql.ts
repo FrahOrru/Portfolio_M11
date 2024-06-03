@@ -7364,7 +7364,7 @@ export type InterestsQuery = { __typename?: 'Query', interests: Array<{ __typena
 export type PostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title?: string | null, introduction?: string | null, sections: Array<{ __typename?: 'Section', id: string, title?: string | null }>, image?: { __typename?: 'Asset', url: string } | null }> };
+export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title?: string | null, introduction?: string | null, sections: Array<{ __typename?: 'Section', id: string, title?: string | null, content?: { __typename?: 'RichText', html: string, text: string } | null }>, image?: { __typename?: 'Asset', url: string } | null }> };
 
 
 export const EducationsDocument = gql`
@@ -7417,6 +7417,10 @@ export const PostsDocument = gql`
     sections {
       id
       title
+      content {
+        html
+        text
+      }
     }
     image {
       url
